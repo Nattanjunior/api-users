@@ -1,12 +1,18 @@
-import fastify from "fastify"
+import express from 'express'
+
 import { RoutesPublic } from "./routes/public"
-const app = fastify()
+import { RoutesPrivate } from "./routes/private"
+import auth from './middlewares/auth'
 
-app.register(RoutesPublic)
+const port = 3000
+const app = express()
 
-app.listen({
-  port:3000
+app.use(express.json())
+
+app.use('/', RoutesPublic)
+app.use('/', auth, RoutesPrivate)
+
+app.listen(port, () => {
+  console.log('server http://localhost:3000')
 })
-.then(()=>{
-  console.log('Server running http:/localhost:3000')
-})
+
