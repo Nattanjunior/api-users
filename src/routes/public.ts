@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
     })
 
     const { email, password } = bodySchema.parse(req.body)
-    // Busca o usuário  no banco de dados
+    // Busca o usuário no banco de dados
     const userLogin = await prisma.user.findUnique({
       where: {
         email
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
     // gerar token
     const token = jwt.sign({ id: userLogin.id }, JWT_SECRET, { expiresIn: '7d' })
 
-    return res.status(200).json({ message: 'Login successful!', token });
+    return res.status(200).json({ message: 'Login successfull!', token });
 
   } catch (error) {
     console.log(error)
