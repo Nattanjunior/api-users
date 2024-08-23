@@ -4,7 +4,7 @@ import { RoutesPublic } from "./routes/public"
 import { RoutesPrivate } from "./routes/private"
 import auth from './middlewares/auth'
 
-const port = 3000
+const port = process.env.port || 3000
 const app = express()
 
 app.use(express.json())
