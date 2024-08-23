@@ -10,6 +10,11 @@ import jwt from 'jsonwebtoken'
 
 const JWT_SECRET = process.env.JWT_SECRET as string
 
+
+router.get('/',()=>{
+  return 'hello world'
+})
+
 // Cadastro
 router.post('/cadastro', async (req, res) => {
   try {
